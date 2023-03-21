@@ -26,7 +26,7 @@ def select_model(args, device):
         from models.team36_swinir import SwinIR
         name, data_range = f"{model_id:02}_swinir_baseline", 255.0
         model_path = os.path.join('model_zoo', 'team36_swinir.pth')
-        model = SwinIR(upscale=args.scale, in_chans=3, img_size=args.training_patch_size, window_size=8,
+        model = SwinIR(upscale=4, in_chans=3, img_size=48, window_size=8,
                         img_range=1., depths=[6, 6, 6, 6, 6, 6], embed_dim=180, num_heads=[6, 6, 6, 6, 6, 6],
                         mlp_ratio=2, upsampler='pixelshuffle', resi_connection='1conv')
         model.load_state_dict(torch.load(model_path), strict=True)
